@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { FiX } from 'react-icons/fi';
 import Button from './reusable/Button';
 import { useState } from 'react';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const selectOptions = [
   'Web Application',
@@ -30,7 +31,7 @@ const HireMeModal = ({ onClose }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:3001/contact', {
+      const response = await fetch(`${API_URL}/contacts`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

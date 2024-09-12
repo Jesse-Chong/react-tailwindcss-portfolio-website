@@ -1,6 +1,7 @@
 import { useCountUp } from 'react-countup';
 import { useEffect, useState } from 'react';
 import CounterItem from './CounterItem';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const fetchLeetCodeProblemCount = async () => {
   const query = `
@@ -15,9 +16,9 @@ const fetchLeetCodeProblemCount = async () => {
       }
     }
   `;
-
+  
   try {
-    const response = await fetch('http://localhost:3001/leetcode-proxy', {
+    const response = await fetch(`${API_URL}/contact`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
