@@ -16,9 +16,9 @@ const fetchLeetCodeProblemCount = async () => {
       }
     }
   `;
-  
+
   try {
-    const response = await fetch(`${API_URL}/contact`, {
+    const response = await fetch(`${API_URL}/leetcode-proxy`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
