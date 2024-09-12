@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import useThemeSwitcher from '../../hooks/useThemeSwitcher';
 import HireMeModal from '../HireMeModal';
 import logoLight from '../../images/logo-light.svg';
-import logoDark from '../../images/logo-dark.svg';
+import logoDark from '../../images/logo-dark.svg'
 import { motion } from 'framer-motion';
 import Button from '../reusable/Button';
 
@@ -49,13 +49,13 @@ const AppHeader = () => {
 						<Link to="/">
 							{activeTheme === 'dark' ? (
 								<img
-									src={logoDark}
+									src={logoLight}
 									className="w-36"
-									alt="Dark Logo"
+									alt="Light Logo"
 								/>
 							) : (
 								<img
-									src={logoLight}
+									src={logoDark}
 									className="w-36"
 									alt="Dark Logo"
 								/>

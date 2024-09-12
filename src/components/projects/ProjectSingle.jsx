@@ -36,3 +36,4 @@ const ProjectSingle = ({ title, category, image }) => {
 };
 
 export default ProjectSingle;
+
