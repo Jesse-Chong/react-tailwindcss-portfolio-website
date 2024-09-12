@@ -31,7 +31,7 @@ const HireMeModal = ({ onClose }) => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${API_URL}/contacts`, {
+      const response = await fetch(`${API_URL}/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
