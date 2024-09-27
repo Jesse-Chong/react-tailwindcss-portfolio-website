@@ -8,6 +8,7 @@
 		"@testing-library/user-event": "^14.4.3",
 		"axios": "^1.7.7",
 		"framer-motion": "4.1.17",
+		"nodemailer": "^6.9.15",
 		"postcss-cli": "^10.1.0",
 		"react": "^18.1.0",
 		"react-countup": "^6.1.1",
