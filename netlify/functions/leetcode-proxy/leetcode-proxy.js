@@ -1,42 +1,56 @@
-const nodemailer = require('nodemailer');
+const axios = require('axios');
 
 const handler = async (event) => {
+  // Common CORS headers
+  const headers = {
+    'Access-Control-Allow-Origin': '*',  
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
+  };
+
+  // Handle preflight OPTIONS request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 204,  // No Content for OPTIONS request
+      headers,
+      body: ''
+    };
+  }
+
   try {
-    const { name, email, subject, message } = JSON.parse(event.body);
-
-    if (!name || !email || !subject || !message) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'All fields are required.' }),
-      };
-    }
-
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.JESSE_EMAIL,
-        pass: process.env.JESSE_PASS,
+    const body = JSON.parse(event.body);
+    const response = await axios.post('https://leetcode.com/graphql', body, {
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
       },
+      timeout: 5000
     });
 
-    const mailOptions = {
-      from: email,
-      to: 'jessechong@pursuit.org',
-      subject: `New Contact Form Submission: ${subject}`,
-      text: `You have received a new message from ${name} (${email}):\n\n${message}`,
-    };
-
-    await transporter.sendMail(mailOptions);
-
+    // Return a successful response with CORS headers
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: 'Message sent successfully!' }),
+      headers, 
+      body: JSON.stringify(response.data)
     };
   } catch (error) {
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to send the message.' }),
-    };
+    if (error.response) {
+      return {
+        statusCode: error.response.status,
+        headers: {
+          ...headers
+        },
+        body: JSON.stringify(error.response.data)
+      };
+    } else {
+      return {
+        statusCode: 500,
+        headers: {
+          ...headers
+        },
+        body: JSON.stringify({ error: 'An error occurred while fetching data from LeetCode' })
+      };
+    }
   }
 };
 
