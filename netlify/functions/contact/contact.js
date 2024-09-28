@@ -1,16 +1,10 @@
 const nodemailer = require('nodemailer');
 
-const handler = async (event) => {
-  if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': 'https://jesse-chong.netlify.app',
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS'
-      },
-    };
+exports.handler = async (event) => {
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: JSON.stringify({ error: 'Method Not Allowed' }) };
   }
+
   try {
     const { name, email, subject, message } = JSON.parse(event.body);
 
@@ -43,11 +37,10 @@ const handler = async (event) => {
       body: JSON.stringify({ success: 'Message sent successfully!' })
     };
   } catch (error) {
+    console.error('Error in contact function:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Failed to send the message.' })
     };
   }
 };
-
-module.exports = { handler };

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Button from '../reusable/Button';
 import FormInput from '../reusable/FormInput';
-const API_URL = process.env.REACT_APP_API_URL;
 
 const ContactForm = () => {
 	const [formData, setFormData] = useState({
@@ -24,7 +23,7 @@ const ContactForm = () => {
 	const handleSubmit = async (e) => {
 	  e.preventDefault();
 	  try {
-		const response = await fetch(`${API_URL}/contact`, {
+		const response = await fetch('api/contact', {
 		  method: 'POST',
 		  headers: {
 			'Content-Type': 'application/json'

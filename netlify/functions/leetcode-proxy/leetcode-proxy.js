@@ -1,18 +1,8 @@
 const axios = require('axios');
 
-const handler = async (event) => {
-  const headers = {
-    'Access-Control-Allow-Origin': 'https://jesse-chong.netlify.app',  
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
-  };
-
-  if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({ message: "Successful preflight call." })
-    };
+exports.handler = async (event) => {
+  if (event.httpMethod !== 'POST') {
+    return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
   try {
@@ -27,28 +17,13 @@ const handler = async (event) => {
 
     return {
       statusCode: 200,
-      headers, 
       body: JSON.stringify(response.data)
     };
   } catch (error) {
-    if (error.response) {
-      return {
-        statusCode: error.response.status,
-        headers: {
-          ...headers
-        },
-        body: JSON.stringify(error.response.data)
-      };
-    } else {
-      return {
-        statusCode: 500,
-        headers: {
-          ...headers
-        },
-        body: JSON.stringify({ error: 'An error occurred while fetching data from LeetCode' })
-      };
-    }
+    console.error('Error in Netlify function:', error);
+    return {
+      statusCode: error.response?.status || 500,
+      body: JSON.stringify({ error: 'An error occurred while fetching data from LeetCode' })
+    };
   }
 };
-
-module.exports = { handler };
