@@ -1,19 +1,17 @@
 const axios = require('axios');
 
 const handler = async (event) => {
-  // Common CORS headers
   const headers = {
-    'Access-Control-Allow-Origin': '*',  
+    'Access-Control-Allow-Origin': 'https://jesse-chong.netlify.app',  
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS'
   };
 
-  // Handle preflight OPTIONS request
   if (event.httpMethod === 'OPTIONS') {
     return {
-      statusCode: 204,  // No Content for OPTIONS request
+      statusCode: 200,
       headers,
-      body: ''
+      body: JSON.stringify({ message: "Successful preflight call." })
     };
   }
 
@@ -27,7 +25,6 @@ const handler = async (event) => {
       timeout: 5000
     });
 
-    // Return a successful response with CORS headers
     return {
       statusCode: 200,
       headers, 
