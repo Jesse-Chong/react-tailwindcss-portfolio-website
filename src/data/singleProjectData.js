@@ -2,6 +2,7 @@
 import Image1 from '../images/FreshStart-UserFlow.png';
 import Image2 from '../images/FreshStart-ERD.png';
 import Image3 from '../images/FreshStart-WireFrame.png';
+import DemoVideo from '../images/demo.mp4';
 // Import icons
 // import {
 // 	FiLinkedin
@@ -16,19 +17,24 @@ export const singleProjectData = {
 	ProjectImages: [
 		{
 			id: 1,
+			title: 'Demo Video',
+			video: DemoVideo
+		},
+		{
+			id: 2,
 			title: 'User flow',
 			img: Image1
 		},
 		{
-			id: 2,
+			id: 3,
 			title: 'Entity Relationship Diagram',
 			img: Image2
 		},
 		{
-			id: 3,
+			id: 4,
 			title: 'WireFrame',
 			img: Image3
-		},
+		}
 	],
 	ProjectInfo: {
 		ClientHeading: 'About',
