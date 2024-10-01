@@ -6,6 +6,7 @@ function AppFooterCopyright() {
         <a
           href="https://github.com/Jesse-Chong"
           target="__blank"
+		  rel="noopener noreferrer"
           className="hover:underline hover:text-indigo-600 dark:hover:text-indigo-300 ml-1 duration-500"
         >
           React & Tailwind CSS Portfolio
@@ -16,6 +17,8 @@ function AppFooterCopyright() {
         </p>
         <a
           href="/privacy-policy"
+		  target="_blank"
+		  rel="noopener noreferrer"
           className="hover:underline text-secondary-dark dark:text-secondary-light hover:text-indigo-600 dark:hover:text-indigo-300 ml-1 duration-500"
         >
           Privacy Policy
