@@ -6,6 +6,7 @@ import AppFooter from './components/shared/AppFooter';
 import AppHeader from './components/shared/AppHeader';
 import './css/App.css';
 import UseScrollToTop from './hooks/useScrollToTop';
+import PrivacyPolicy from './components/shared/PrivacyPolicy.jsx';
 // test
 const About = lazy(() => import('./pages/AboutMe'));
 const Contact = lazy(() => import('./pages/Contact.jsx'));
@@ -32,6 +33,7 @@ function App() {
 
 							<Route path="about" element={<About />} />
 							<Route path="contact" element={<Contact />} />
+							<Route path="/privacy-policy" element={<PrivacyPolicy />} />
 						</Routes>
 					</Suspense>
 					<AppFooter />
