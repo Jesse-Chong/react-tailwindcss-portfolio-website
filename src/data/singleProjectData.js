@@ -52,7 +52,7 @@ export const singleProjectData = {
 			{
 				id: 3,
 				title: 'Website',
-				details: 'https://pursuit.org',
+				details: 'https://freshstartonestop.netlify.app',
 			}
 		],
 		ObjectivesHeading: 'Objective',
