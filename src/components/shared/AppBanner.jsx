@@ -1,8 +1,7 @@
 import useThemeSwitcher from '../../hooks/useThemeSwitcher';
 import { FiArrowDownCircle } from 'react-icons/fi';
-import developerLight from '../../images/developer.svg';
-import developerDark from '../../images/developer-dark.svg';
 import { motion } from 'framer-motion';
+import leonardo from '../../images/Leonardo_Anime_XL_Same_image_except_the_glasses_wearing_male_g_2.jpg';
 
 const AppBanner = () => {
 	const [activeTheme] = useThemeSwitcher();
@@ -70,7 +69,7 @@ const AppBanner = () => {
 			>
 				<img
 					src={
-						activeTheme === 'dark' ? developerLight : developerDark
+						activeTheme === 'dark' ? leonardo : leonardo
 					}
 					alt="Developer"
 				/>
