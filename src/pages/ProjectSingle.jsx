@@ -1,8 +1,28 @@
+import { useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import ProjectGallery from '../components/projects/ProjectGallery';
 import ProjectHeader from '../components/projects/ProjectHeader';
 import ProjectInfo from '../components/projects/ProjectInfo';
-import { SingleProjectProvider } from '../context/SingleProjectContext';
+import SingleProjectContext, { SingleProjectProvider } from '../context/SingleProjectContext';
 import { motion } from 'framer-motion';
+
+const ProjectSingleContent = () => {
+	const { id } = useParams(); // This will get the project ID from the URL
+	const { switchProject } = useContext(SingleProjectContext);
+
+	useEffect(() => {
+		// Convert string ID to number and switch project
+		switchProject(Number(id));
+	}, [id, switchProject]);
+
+	return (
+		<>
+			<ProjectHeader />
+			<ProjectGallery />
+			<ProjectInfo />
+		</>
+	);
+};
 
 const ProjectSingle = () => {
 	return (
@@ -17,9 +37,7 @@ const ProjectSingle = () => {
 			className="container mx-auto mt-5 sm:mt-10"
 		>
 			<SingleProjectProvider>
-				<ProjectHeader />
-				<ProjectGallery />
-				<ProjectInfo />
+				<ProjectSingleContent />
 			</SingleProjectProvider>
 		</motion.div>
 	);
