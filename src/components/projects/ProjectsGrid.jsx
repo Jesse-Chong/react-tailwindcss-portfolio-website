@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import ProjectSingle from './ProjectSingle';
+import ProjectSingle from './ProjectCard';
 import { ProjectsContext } from '../../context/ProjectsContext';
 
 const ProjectsGrid = () => {
@@ -38,6 +38,7 @@ const ProjectsGrid = () => {
 								title={project.title}
 								category={project.category}
 								image={project.img}
+								id={project.id}
 								key={project.id}
 							/>
 					  ))
@@ -46,6 +47,7 @@ const ProjectsGrid = () => {
 								title={project.title}
 								category={project.category}
 								image={project.img}
+								id={project.id}
 								key={project.id}
 							/>
 					  ))}
