@@ -1,7 +1,5 @@
-import {
-	FiGithub,
-	FiLinkedin
-} from 'react-icons/fi';
+import { FiGithub, FiLinkedin } from 'react-icons/fi';
+import { SiDevdotto, SiMedium } from 'react-icons/si';
 import AppFooterCopyright from './AppFooterCopyright';
 
 const socialLinks = [
@@ -14,7 +12,17 @@ const socialLinks = [
 		id: 2,
 		icon: <FiLinkedin />,
 		url: 'https://www.linkedin.com/in/jessemchong',
-	}
+	},
+	{
+		id: 3,
+		icon: <SiDevdotto />,
+		url: 'https://dev.to/jesse_chong_3bcc276c4f950',
+	},
+	{
+		id: 4,
+		icon: <SiMedium />,
+		url: 'https://medium.com/@jessechong',
+	},
 ];
 
 const AppFooter = () => {
