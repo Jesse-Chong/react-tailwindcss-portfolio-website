@@ -1,6 +1,7 @@
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import { SiDevdotto, SiMedium } from 'react-icons/si';
 import AppFooterCopyright from './AppFooterCopyright';
+import HackerRankLogo from '../../images/HackerRank_logo.svg';
 
 const socialLinks = [
 	{
@@ -22,6 +23,17 @@ const socialLinks = [
 		id: 4,
 		icon: <SiMedium />,
 		url: 'https://medium.com/@jessechong',
+	},
+	{
+		id: 5,
+		icon: (
+			<img
+				src={HackerRankLogo}
+				alt="HackerRank"
+				style={{ width: '24px', height: '24px' }}
+			/>
+		),
+		url: 'https://www.hackerrank.com/profile/jessechong',
 	},
 ];
 
